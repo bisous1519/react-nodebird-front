@@ -1,4 +1,4 @@
-//import React from 'react'; // Next는 이 구문이 필요 x (있어도 상관없똥)
+import React from "react"; // Next는 이 구문이 필요 x (있어도 상관없똥)
 import AppLayout from "../components/AppLayout";
 
 // Next는 pages폴더를 인식 -> 안에 있는 파일들을 개별적인, 코드스플리팅 된 페이지 컴포넌트로 만들어줌
