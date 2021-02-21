@@ -41,7 +41,11 @@ const AppLayout = ({ children }) => {
         {/* 1. 가로먼저 자르고 -> 세로 자른다  */}
         {/* 2. 반응형 디자인시에 모바일 -> 데스크탑 순으로 디자인 */}
         <Col xs={24} md={6}>
-          {isLoggedIn ? <UserProfile /> : <LoginForm />}
+          {isLoggedIn ? (
+            <UserProfile setIsLoggedIn={setIsLoggedIn} />
+          ) : (
+            <LoginForm setIsLoggedIn={setIsLoggedIn} />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}
@@ -50,9 +54,9 @@ const AppLayout = ({ children }) => {
           <a
             href="https://github.com/bisous1519"
             target="_blank"
-            rel="noreferrer noopener"
+            rel="noreferrer noopener" // target _blank시, rel="noreferer noopener" 가 있어야 보안위협이 사라짐
           >
-            eomji's github
+            eomji&apos;s github
           </a>
         </Col>
         {/* xs: 모바일, sm: 테블릿, md: 작은 데스크탑 lg/xl: 대화면 */}
