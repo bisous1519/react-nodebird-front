@@ -1,16 +1,18 @@
 import { createWrapper } from "next-redux-wrapper";
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from "../reducers";
 
 const configureStore = () => {
-  const store = createStore(reducer);
-  store.dispatch({
-    type: "CHANGE_NICKNAME",
-    data: "boogicho",
-  });
+  const enhancer =
+    process.env.NODE_ENV === "production"
+      ? compose(applyMiddleware([])) // 배포용일때.
+      : composeWithDevTools(applyMiddleware([])); // 개발용일때. (redux-devtools-extension 쓸 수 있음)
+  const store = createStore(reducer, enhancer);
   return store;
   // store : state와 reducer를 포함하는 것
 };
+
 const wrapper = createWrapper(configureStore, {
   debug: process.env.NODE_ENV === "development",
 });
