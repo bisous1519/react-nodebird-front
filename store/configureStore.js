@@ -4,10 +4,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from "../reducers";
 
 const configureStore = () => {
+  const middlewares = [];
   const enhancer =
     process.env.NODE_ENV === "production"
-      ? compose(applyMiddleware([])) // 배포용일때.
-      : composeWithDevTools(applyMiddleware([])); // 개발용일때. (redux-devtools-extension 쓸 수 있음)
+      ? compose(applyMiddleware(...middlewares)) // 배포용일때.
+      : composeWithDevTools(applyMiddleware(...middlewares)); // 개발용일때. (redux-devtools-extension 쓸 수 있음)
   const store = createStore(reducer, enhancer);
   return store;
   // store : state와 reducer를 포함하는 것
