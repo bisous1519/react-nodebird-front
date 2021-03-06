@@ -1,7 +1,7 @@
 import { all, fork, call, put } from "redux-saga/effects";
 
 /*
-    제너레이터 : 함수의 일종
+    function* : 제너레이터(함수의 일종)
     const gen() = function*() {
       console.log(1);
       yield;
